@@ -1,3 +1,4 @@
+
 ## Related work
 
 During our preliminary research, we discovered a number of projects utilising the Leap Motion for similar purposes. Most
