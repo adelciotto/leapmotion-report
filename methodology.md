@@ -17,7 +17,7 @@ easily accessible and playable via a modern web browser (Chrome, Safari, Firefox
 
 Due to the prototypal nature of the experiments, many ideas, designs and implementations needed to be constantly tweaked
 or discarded upon user testing. This meant that it was essential to be able to quickly edit, and get new prototypes up
-and running. To achieve this efficient workflow, a template project was developed that uses a suite of [Node.js]()
+and running. To achieve this efficient work flow, a template project was developed that uses a suite of [Node.js]()
 modules that automate building, hosting (both locally and remotely), live editing, and asset optimisation. The template
 project is included in the submission under the folder *leapmotion-prototype-template*, and can also be accessed via
 it's Github repository at: https://github.com/adelciotto/leapmotion-prototype-template
@@ -116,15 +116,15 @@ is a common therapeutic exercise for broken or fractured fingers, or stroke reha
 
 As stated above and by the in-game help text in *Figure 1.3*, the player simply moves their hand across the Leap Motion
 horizontally to position the player ship. This equates to measuring their palms distance in millimetres from the origin
-of the device on the x-axis. The coordinate system is depicted in the illustration in *Figure 1.4* below.
+of the device on the x-axis.[] The coordinate system is depicted in the illustration in *Figure 1.4* below.
 
 ![leap-coords](res/leap_coords.png)
 
-*Figure 1.4: Leap Motion coordinate system*
+*Figure 1.4: Leap Motion coordinate system []*
 
 Getting the distance from the origin is trivial and actually handled by the Leap Motion API through the
 ```palmPosition``` property of the ```Hand``` class. This property is a 3 dimensional vector containing the distance in
-millimetres from the origin for each axis (X, Y, and Z). We wrap this functionality in the ```OnMove``` event, and the
+millimetres from the origin for each axis (X, Y, and Z).[] We wrap this functionality in the ```OnMove``` event, and the
 processing involved for this can be seen in *Figure 1.2*.
 
 ![preview](res/invaders-2.png)
@@ -133,7 +133,7 @@ processing involved for this can be seen in *Figure 1.2*.
 
 Leap Motion also natively includes recognition for a pinching gesture between any four fingers and the thumb. It is
 accessiible via the ```pinchStrength``` property of the ```Hand``` class, and is a floating point number in the range of
-0..1 that represents the strength of the pinch hand pose. This functionality is wrapped in both the ```OnPinching``` and
+0..1 that represents the strength of the pinch hand pose.[] This functionality is wrapped in both the ```OnPinching``` and
 ```OnPinched``` events, with the former event being constantly invoked as the user is pinching, while the latter
 is invoked only once each pinch. To ensure that the user is exercising more than just one finger, the game will only let
 the player shoot if a different finger has pinched since the last stored pinch. Leap Motion does not provide which
@@ -181,15 +181,15 @@ screen. Initially we restricted the player from continiously being able to clenc
 the original frantic tapping on the screen by having them constantly clench and un-clench. However after extensive play
 testing this resulted in a sore hand after only small game sessions. This means the mechanics have slightly changed from
 the original adopting the control scheme of the similar game [iCopter](https://itunes.apple.com/au/app/icopter-classic/id301409454?mt=8).
-The user now has to hold their clench to continiously raise the Y-Velocity of the bird, un-clenching will allow the
+The user now has to hold their clench to continuously raise the Y-Velocity of the bird, unclenching will allow the
 gravitational force to pull the bird down.
 
 ![preview](res/flappy-bird.png)
 
 *Figure 1.7: In-game screen-shot of the Flappy Bird clone*
 
-Similairly to the pinching gesture, Leap Motion represents clenching through the ```gripStrength``` property of the
-```Hand``` class. We wrap this in the ```OnClenching``` event, and the logic for processing this event is similar to
+Similarly to the pinching gesture, Leap Motion represents clenching through the ```gripStrength``` property of the
+```Hand``` class.[] We wrap this in the ```OnClenching``` event, and the logic for processing this event is similar to
 that of ```OnPinching```.
 
 ```js
@@ -213,6 +213,44 @@ _processOnClenching(frame, hand, listener) {
 
 **Source can be found in *leapmotion-wolfenstein-3d* and viewed online at:
 https://github.com/adelciotto/leapmotion-wolfenstein-3d**
+
+![preview](res/wolf3d.png)
+
+Determined to provide a real gaming experience, we decided to produce a game that would cater to users with more gaming
+experience. To experiment with the idea of a more hardcore game we chose to integrate motion controls into a HTML5
+clone of [ID Softwares]() [Wolfenstein 3D](). Wolfenstein is genre defining first person shooter that was a pioneer for
+technical innovation. With a game engine originally implemented by programmer [John Carmack](), it uses a technique
+known as [raycasting]() that allows for fast pseudo 3D rendering in software. The game internally represents each level
+as a 2D map or grid, and a ray is cast for each column in the screen from the players point of view (POV). When the
+traced ray enters a cell in the grid that is a wall in-game, a line will be drawn vertically with a length based on the
+distance of that intersected cell to the player.[]
+
+![preview](res/raycastgrid.png)
+
+![preview](res/raycasthit.png)
+
+*Figure 2.0: Illustrating the internal 2D representation of the map, and casting rays from the player*
+
+To control the game, a combination of the keyboard and motion controls are implemented. To move forward, backwards, left
+and right the regular WASD keys are used. Aiming the gun is performed by placing a hand over the device with the index
+finger pointing towards the screen, and then moving the hand or finger left and right. This gesture is internally named
+```OnAiming``` and requires the index finger always be extented (pointing). This hand configuration is illustrated below
+in *Figure 2.1*:
+
+![preview](res/aiming.jpeg)
+
+*Figure 2.1: The aiming gesture*
+
+To attack, the user must contract their thumb towards their index finger, loosely emulating pulling down on a gun
+trigger. This gesture is implemented as the ```OnThumbContracting``` event, and is implemented by calculating the angle
+between the thumbs distali phalanx (bone most distant from the body) and the index fingers proximal phalanx (bone
+closest to the body).
+
+![preview](res/attack.jpeg)
+
+*Figure 2.2: The attack / shooting gesture*
+
+To open doors and push walls in game, the clenching gesture is re used.
 
 ### Data preparation
 
