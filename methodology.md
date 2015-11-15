@@ -134,7 +134,7 @@ processing involved for this can be seen in *Figure 1.2*.
 *Figure 1.5: Leap Motion coordinate system*
 
 Leap Motion also natively includes recognition for a pinching gesture between any four fingers and the thumb. It is
-accessiible via the ```pinchStrength``` property of the ```Hand``` class, and is a floating point number in the range of
+accessible via the ```pinchStrength``` property of the ```Hand``` class, and is a floating point number in the range of
 0..1 that represents the strength of the pinch hand pose.[3] This functionality is wrapped in both the ```OnPinching``` and
 ```OnPinched``` events, with the former event being constantly invoked as the user is pinching, while the latter
 is invoked only once each pinch. To ensure that the user is exercising more than just one finger, the game will only let
@@ -254,12 +254,6 @@ closest to the body).
 
 To open doors and push walls in game, the clenching gesture is re used.
 
-### Data preparation
-
-TODO: Discuss original transition from stroke rehibilitation to hand therapy; discuss anecdotal experiences (alysha)
-
-TODO: List and discuss some references
-
 ### Programs and scripts required
 
 ** Note: To interact with any of the experiments, a Leap Motion device will need to be plugged into your machine.**
@@ -279,7 +273,7 @@ browsers:
   * Flappy Bird: http://adelciotto.github.io/leapmotion-flappybird/
   * Space Invaders: http://adelciotto.github.io/leapmotion-space-invaders/
   * Template: http://adelciotto.github.io/leapmotion-prototype-template/
-  * Wolfenstein 3D: TODO
+  * Wolfenstein 3D: http://adelciotto.github.io/leapmotion-wolfenstein-3d/
 
 #### Development
 
