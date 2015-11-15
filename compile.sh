@@ -7,5 +7,5 @@
 #
 
 cat intro.md related_work.md methodology.md results.md learning_outcomes.md \
-	conclusions.md docs.md > final.md
+	conclusions.md docs.md refs.md > final.md
 echo "All .md documents compiled into final.md"
