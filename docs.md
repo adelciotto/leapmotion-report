@@ -1,7 +1,7 @@
 
 ## Documentation
 
-**Note: As stated in the Programs and Scripts section, this guide assumes your running under a Nix environment (Unix,
+**Note: As stated in the Programs and Scripts section, this guide assumes you are running under a Nix environment (Unix,
 Linux, OSX)**
 
 To develop and run any of the experiments locally, follow the instructions below:
