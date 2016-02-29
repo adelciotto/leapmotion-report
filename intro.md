@@ -1,7 +1,6 @@
 # Exploring physical therapy with Leap Motion controlled games
 
-> *A research project by **[Anthony Del Ciotto](http://anthonydel.com)**, **Timothy Wong**, **Eric Li**, and
-  **Cameron Matthews**.*</br>
+> *A research project by **[Anthony Del Ciotto](http://anthonydel.com)**, **Timothy Wong***.*</br>
   *In consultation with **[Ibrahim Khalil](http://goanna.cs.rmit.edu.au/~ibrahimk/)**.*
 
 ## Abstract
